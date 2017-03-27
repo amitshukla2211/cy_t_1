@@ -1,0 +1,32 @@
+#include "mbed.h"
+
+PwmOut out(PTA4);
+Timer timer;
+
+int main() 
+{
+    int current_time;
+    
+    out.period_ms(50);
+          out.write(0.5);
+          timer.start();
+       
+            while(1)
+    {
+         current_time=timer.read_ms();
+         if(current_time == 58*50)
+         
+           {
+             out.period_ms(50);
+             out.write(0);
+             
+       timer.stop();
+       wait_ms(2*50);
+       out.period_ms(50);
+       out.write(0.5);
+       timer.reset();
+       timer.start();
+              
+              }
+          }                       
+}
